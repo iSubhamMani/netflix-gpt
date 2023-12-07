@@ -1,9 +1,17 @@
 import { useRef, useState } from "react";
 import checkValidData from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import Header from "./Header";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
+  const navigate = useNavigate();
 
   const name = useRef(null);
   const email = useRef(null);
@@ -21,14 +29,55 @@ const Login = () => {
     );
     setErrorMsg(validateResult);
 
-    // Authentication
+    if (validateResult) return;
+
+    // Auth
+
+    if (!isSignIn) {
+      // sign up the user
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        pwd.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          navigate("/browse");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+
+          setErrorMsg(errorMessage);
+          // ..
+        });
+    } else {
+      // sign in the user
+      signInWithEmailAndPassword(auth, email.current.value, pwd.current.value)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+
+          navigate("/browse");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+
+          setErrorMsg(errorCode);
+        });
+    }
   };
 
   return (
     <div>
+      <Header />
       <div className="absolute w-full">
         <img
-          className="brightness-50 w-full object-cover"
+          className="brightness-50 w-full object-cover min-h-screen"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_large.jpg"
           alt=""
         />

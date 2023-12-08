@@ -16,4 +16,12 @@ const API_OPTIONS = {
   },
 };
 
-export { NETFLIX_LOGO, PROFILE_AVATAR, NETFLIX_BG, API_OPTIONS };
+const MOVIE_POSTER_URL = "https://image.tmdb.org/t/p/w200/";
+
+export {
+  NETFLIX_LOGO,
+  PROFILE_AVATAR,
+  NETFLIX_BG,
+  API_OPTIONS,
+  MOVIE_POSTER_URL,
+};

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { addUser, removeUser } from "../utils/slices/userSlice";
+import { NETFLIX_LOGO, PROFILE_AVATAR } from "../utils/constants";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
@@ -28,6 +29,11 @@ const Header = () => {
         dispatch(removeUser());
         navigate("/");
       }
+
+      // Unsubscribe on unmount
+      return () => {
+        unsubscribe();
+      };
     });
   }, []);
 
@@ -43,18 +49,10 @@ const Header = () => {
 
   return (
     <div className="flex justify-between items-center absolute z-10 w-full top-0 px-8 bg-gradient-to-b from-black">
-      <img
-        className="w-[200px]"
-        src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-        alt="Logo"
-      />
+      <img className="w-[200px]" src={NETFLIX_LOGO} alt="Logo" />
       {user && (
         <div className="flex gap-4 px-4">
-          <img
-            className="w-12 h-12"
-            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png?20201013161117"
-            alt=""
-          />
+          <img className="w-10 h-10" src={PROFILE_AVATAR} alt="Avatar" />
           <div className="flex items-center justify-center">
             <button
               onClick={handleSignOut}

@@ -6,10 +6,10 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/slices/userSlice";
+import { NETFLIX_BG } from "../utils/constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -94,7 +94,7 @@ const Login = () => {
       <div className="absolute w-full">
         <img
           className="brightness-50 w-full object-cover min-h-screen"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+          src={NETFLIX_BG}
           alt=""
         />
       </div>

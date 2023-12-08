@@ -7,4 +7,13 @@ const PROFILE_AVATAR =
 const NETFLIX_BG =
   "https://assets.nflxext.com/ffe/siteui/vlv3/b4c7f092-0488-48b7-854d-ca055a84fb4f/5b22968d-b94f-44ec-bea3-45dcf457f29e/IN-en-20231204-popsignuptwoweeks-perspective_alpha_website_large.jpg";
 
-export { NETFLIX_LOGO, PROFILE_AVATAR, NETFLIX_BG };
+const API_OPTIONS = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization:
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNDE5OTgzZDdiY2M1MGVjNjQ1NGUwNzdmNDIyYjY3MSIsInN1YiI6IjY1NzMwOWI5OTQ1YzIwMDBlYTRmMjFhYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JP6dOxex5zYgAZH-A4T58YEqYOors-XHSmy1zAQgs_w",
+  },
+};
+
+export { NETFLIX_LOGO, PROFILE_AVATAR, NETFLIX_BG, API_OPTIONS };

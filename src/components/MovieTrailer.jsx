@@ -7,7 +7,7 @@ const MovieTrailer = ({ movieId }) => {
   const trailerVideo = useSelector((store) => store.movies.trailer);
 
   return (
-    <div className="w-full">
+    <div className="">
       <iframe
         className="w-full aspect-video -mt-28"
         src={`https://www.youtube.com/embed/${trailerVideo?.key}?&autoplay=1&mute=1&controls=0`}

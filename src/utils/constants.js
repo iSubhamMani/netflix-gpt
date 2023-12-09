@@ -25,3 +25,9 @@ export {
   API_OPTIONS,
   MOVIE_POSTER_URL,
 };
+
+export const SUPPORTED_LANG = [
+  { identifier: "en", name: "English" },
+  { identifier: "spanish", name: "Spanish" },
+  { identifier: "bengali", name: "Bengali" },
+];

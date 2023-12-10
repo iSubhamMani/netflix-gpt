@@ -99,11 +99,11 @@ const Login = () => {
         />
       </div>
       <form
-        className="w-[60%] px-16 py-12 max-w-md mt-32 mx-auto right-0 left-0 absolute bg-black
+        className="w-100% md:w-[60%] px-8 md:px-16 py-4 md:py-12 max-w-md mt-32 mx-auto right-0 left-0 absolute bg-black
       flex flex-col gap-10 bg-opacity-70 rounded-sm"
       >
         <div>
-          <h3 className="text-white font-bold text-3xl">
+          <h3 className="text-white font-bold text-2xl md:text-3xl">
             {isSignIn ? "Sign In" : "Sign Up"}
           </h3>
         </div>
@@ -111,7 +111,7 @@ const Login = () => {
           <div>
             <input
               ref={name}
-              className="w-full p-4 outline-none rounded-[3px] border-[1px] border-white
+              className="w-full p-3 md:p-4 outline-none rounded-[3px] border-[1px] border-white
             text-white bg-[rgba(23,23,23,0.8)]"
               type="text"
               placeholder="Full name"
@@ -122,7 +122,7 @@ const Login = () => {
         <div>
           <input
             ref={email}
-            className="w-full p-4 outline-none rounded-[3px] border-[1px] border-white
+            className="w-full p-3 md:p-4 outline-none rounded-[3px] border-[1px] border-white
             text-white bg-[rgba(23,23,23,0.8)]"
             type="email"
             placeholder="Email or phone number"
@@ -131,7 +131,7 @@ const Login = () => {
         <div>
           <input
             ref={pwd}
-            className="w-full p-4 outline-none rounded-[3px]
+            className="w-full p-3 md:p-4 outline-none rounded-[3px]
             bg-[rgba(23,23,23,0.8)] border-[1px] border-white text-white"
             type="password"
             placeholder="Password"

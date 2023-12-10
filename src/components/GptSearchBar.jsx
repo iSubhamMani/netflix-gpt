@@ -50,12 +50,12 @@ const GptSearchBar = () => {
           e.preventDefault();
         }}
         action=""
-        className="bg-opacity-80 p-4 bg-black w-[50%] mx-auto flex gap-4 items-center justify-between rounded-sm"
+        className="bg-opacity-80 p-4 bg-black w-[100%]  md:w-[50%] mx-auto flex flex-col md:flex-row gap-4 items-center justify-between rounded-sm"
       >
         <input
           ref={searchText}
           type="text"
-          className="border-b-2 border-b-[#E50914] px-4 py-2 font-medium w-[70%] bg-transparent text-lg text-white outline-none"
+          className="border-b-2 border-b-[#E50914] px-4 py-2 font-medium w-[100%] bg-transparent text-center md:text-left text-lg text-white outline-none"
           placeholder={lang[langKey].gptSearchPlaceholder}
         />
         <button

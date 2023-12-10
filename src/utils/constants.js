@@ -11,8 +11,7 @@ const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNDE5OTgzZDdiY2M1MGVjNjQ1NGUwNzdmNDIyYjY3MSIsInN1YiI6IjY1NzMwOWI5OTQ1YzIwMDBlYTRmMjFhYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.JP6dOxex5zYgAZH-A4T58YEqYOors-XHSmy1zAQgs_w",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY,
   },
 };
 
@@ -25,6 +24,8 @@ export {
   API_OPTIONS,
   MOVIE_POSTER_URL,
 };
+
+export const OPEN_AI_KEY = process.env.REACT_APP_OPEN_AI_KEY;
 
 export const SUPPORTED_LANG = [
   { identifier: "en", name: "English" },

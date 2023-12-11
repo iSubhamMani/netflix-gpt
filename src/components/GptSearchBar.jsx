@@ -3,7 +3,7 @@ import lang from "../utils/langConstants";
 import { useRef } from "react";
 import openai from "../utils/openAI";
 import { API_OPTIONS } from "../utils/constants";
-import { addGptMovieResult } from "../utils/slices/gptSlice";
+import { addGptMovieResult, toggleLoader } from "../utils/slices/gptSlice";
 
 const GptSearchBar = () => {
   const dispatch = useDispatch();
@@ -11,6 +11,7 @@ const GptSearchBar = () => {
   const searchText = useRef(null);
 
   const handleGPTSearch = async () => {
+    dispatch(toggleLoader(true));
     // Make api call to open ai to get movie results
     const query =
       "Act as a Movie Recommendation system and suggest some movies for the query: " +
@@ -31,6 +32,7 @@ const GptSearchBar = () => {
     dispatch(
       addGptMovieResult({ movieNames: gptMovies, movieResults: tmdbResults })
     );
+    dispatch(toggleLoader(false));
   };
 
   const searchMovieTMDB = async (movieName) => {
